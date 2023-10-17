@@ -1,32 +1,24 @@
 from behave import when, then
-from steps import api_request
+from support import api_request
 
 
 @when(u"I perform a '{method}' request to the endpoint '{endpoint}'")
 def step_impl(context, method, endpoint):
-    api_request.send_request(context, base_url=context.config.userdata['base_url'], endpoint=endpoint, method=method)
+    api_request.send_request(context=context, method=method, base_url=context.config.userdata['base_url'], endpoint=endpoint, body=context.text)
 
 
-@then(u"the response should have the '{response_path}' equals to '{expected_response_value}'")
+@then(u"the response body should have the '{response_path}' equals to '{expected_response_value}'")
 def step_impl(context, response_path, expected_response_value):
-    extracted_values = api_request.extract_value_from_json(context.api_response_body, response_path)
-
-    if extracted_values is None:
-        raise AssertionError(f"No matches found for JSONPath: {response_path}")
-
-    if str(extracted_values) != expected_response_value:
-        raise AssertionError(
-            f"Expected '{response_path}' to be '{expected_response_value}', but got '{extracted_values}'"
-        )
+    obtained_value = api_request.get_response_value(context.api_response_body, response_path)
+    assert obtained_value != False, 'Response value was not found in response: %s' % context.api_response_body
+    assert str(obtained_value) == expected_response_value, 'Response value not expected: %s not equal to %s' % (expected_response_value, obtained_value)
 
 
 @then(u'the response status code should be: "{expected_status_code}"')
 def step_impl(context, expected_status_code):
-    expected_status_code = int(expected_status_code)
-    response = context.api_response
-    assert response.status_code == expected_status_code, f"Expected status code {expected_status_code}, but got {response.status_code}"
+    assert expected_status_code == context.api_response_status_code, f"Expected status code %s, but got %s" % (expected_status_code, context.api_response_status_code)
 
 
-@when(u"When a '{method}' request is sent to the endpoint '{endpoint}' with body")
+@when(u"a '{method}' request is sent to the endpoint '{endpoint}' with body")
 def step_impl(context, method, endpoint):
     api_request.send_request(context, base_url=context.config.userdata['base_url'], endpoint=endpoint, method=method, body=context.text)

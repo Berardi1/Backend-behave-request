@@ -5,5 +5,5 @@ Feature: Delete a post
 
 
     Scenario: Delete an existent post
-      When I perform a 'DELETE' request to the endpoint '/posts/1'
+      When I perform a 'DELETE' request to the endpoint 'posts/1'
       Then the response status code should be: "204"

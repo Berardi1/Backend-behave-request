@@ -1,9 +1,9 @@
-@get_post
+@get
 Feature: Getting a post
     As a Jsonplaceholder user
     I want to request the API
 
-
+    @smoke
      Scenario: Validate that API returns the correct post information
        When I perform a 'GET' request to the endpoint 'posts/1'
        Then the response should have the 'userId' equals to '1'

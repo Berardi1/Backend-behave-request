@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fee63d46-cb5e-4240-86a1-efa400d4b8b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/create_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/create_post.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/delete_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/delete_post.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/get_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/get_post.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/features/update_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/update_post.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/api_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/api_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steps/implemenatation.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/implemenatation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2VIHgwKyRXluzD5Sf6vEzaMQBOb" />
   <component name="ProjectViewState">

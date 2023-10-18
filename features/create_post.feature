@@ -1,8 +1,9 @@
+@create
 Feature: Create a post
     As a Jsonplaceholder user
     I want to be able to send a request to the API
 
-
+  @smoke
   Scenario: Verify that API successfully creates a new post
     When a 'POST' request is sent to the endpoint 'posts' with body
     """

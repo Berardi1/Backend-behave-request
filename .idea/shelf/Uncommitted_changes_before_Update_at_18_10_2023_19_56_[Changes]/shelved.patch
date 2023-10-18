@@ -1,0 +1,215 @@
+Index: features/get_post.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>@get_post\r\nFeature: Getting a post\r\n    As a Jsonplaceholder user\r\n    I want to request the API\r\n\r\n\r\n     Scenario: Validate that API returns the correct post information\r\n       When I perform a 'GET' request to the endpoint 'posts/1'\r\n       Then the response should have the 'userId' equals to '1'\r\n       And the response should have the 'id' equals to '1'\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/features/get_post.feature b/features/get_post.feature
+--- a/features/get_post.feature	(revision c42328a808e68d41c0f3f02aecaaa18187539baa)
++++ b/features/get_post.feature	(date 1697669514522)
+@@ -1,9 +1,9 @@
+-@get_post
++@get
+ Feature: Getting a post
+     As a Jsonplaceholder user
+     I want to request the API
+ 
+-
++    @smoke
+      Scenario: Validate that API returns the correct post information
+        When I perform a 'GET' request to the endpoint 'posts/1'
+        Then the response should have the 'userId' equals to '1'
+Index: features/delete_post.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Feature: Delete a post\r\n    In order to delete a existent post\r\n    As a Jsonplaceholder user\r\n    I want to be able to send a request to the API\r\n\r\n\r\n    Scenario: Delete an existent post\r\n      When I perform a 'DELETE' request to the endpoint 'posts/1'\r\n      Then the response status code should be: \"204\"
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/features/delete_post.feature b/features/delete_post.feature
+--- a/features/delete_post.feature	(revision c42328a808e68d41c0f3f02aecaaa18187539baa)
++++ b/features/delete_post.feature	(date 1697669514641)
+@@ -1,9 +1,10 @@
++@delete
+ Feature: Delete a post
+     In order to delete a existent post
+     As a Jsonplaceholder user
+     I want to be able to send a request to the API
+ 
+-
++  @smoke
+     Scenario: Delete an existent post
+       When I perform a 'DELETE' request to the endpoint 'posts/1'
+       Then the response status code should be: "204"
+\ No newline at end of file
+Index: features/update_post.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Feature: Update an existent post\r\n    In order to update a existent post\r\n    As a Jsonplaceholder user\r\n    I want to be able to send a request to the API\r\n\r\n    Scenario: Update a existent post\r\n      When a 'PUT' request is sent to the endpoint 'posts/1' with body\r\n    \"\"\"\r\n        {\r\n          \"userId\": 2,\r\n          \"id\": 2,\r\n          \"title\": \"update post test\",\r\n          \"body\": \"This is an update of the test\"\r\n        }\r\n    \"\"\"\r\n\r\n    Then the response body should have the 'userId' equals to '2'\r\n    And the response body should have the 'id' equals to '2'\r\n    And the response body should have the 'title' equals to 'update post test'\r\n    And the response body should have the 'body' equals to 'This is an update of the test'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/features/update_post.feature b/features/update_post.feature
+--- a/features/update_post.feature	(revision c42328a808e68d41c0f3f02aecaaa18187539baa)
++++ b/features/update_post.feature	(date 1697669514426)
+@@ -1,8 +1,9 @@
++@update
+ Feature: Update an existent post
+     In order to update a existent post
+     As a Jsonplaceholder user
+     I want to be able to send a request to the API
+-
++    @smoke
+     Scenario: Update a existent post
+       When a 'PUT' request is sent to the endpoint 'posts/1' with body
+     """
+Index: features/create_post.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>Feature: Create a post\r\n    As a Jsonplaceholder user\r\n    I want to be able to send a request to the API\r\n\r\n\r\n  Scenario: Verify that API successfully creates a new post\r\n    When a 'POST' request is sent to the endpoint 'posts' with body\r\n    \"\"\"\r\n        {\r\n          \"userId\": 1,\r\n          \"id\": 2,\r\n          \"title\": \"POST test\",\r\n          \"body\": \"This is a test\"\r\n        }\r\n    \"\"\"\r\n    Then the response body should have the 'userId' equals to '1'\r\n    And the response body should have the 'id' equals to '2'\r\n    And the response body should have the 'title' equals to 'POST test'\r\n    And the response body should have the 'body' equals to 'This is a test'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/features/create_post.feature b/features/create_post.feature
+--- a/features/create_post.feature	(revision c42328a808e68d41c0f3f02aecaaa18187539baa)
++++ b/features/create_post.feature	(date 1697669514682)
+@@ -1,8 +1,9 @@
++@create
+ Feature: Create a post
+     As a Jsonplaceholder user
+     I want to be able to send a request to the API
+ 
+-
++  @smoke
+   Scenario: Verify that API successfully creates a new post
+     When a 'POST' request is sent to the endpoint 'posts' with body
+     """
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+new file mode 100644
+--- /dev/null	(date 1697669755530)
++++ b/README.md	(date 1697669755530)
+@@ -0,0 +1,81 @@
++#Backend Request Python
++
++Backend test project using [Python](https://www.python.org/), [Behave](https://behave.readthedocs.io/en/latest/) and [Request](https://pypi.org/project/requests/)
++
++## Table of Contents
++
++- [Pre-requisites](#Pre-requisites)
++- [Project Setup](#Project Setup)
++- [Test execution](#testexecution)
++
++# Pre-requisites
++
++This project is based on `Python3`, `pip` and `venv`.
++
++# Project Setup
++
++### Installing Python3 on Windows. 
++
++1. Download Python:
++
++ - Visit the [Python downloads page](https://www.python.org/downloads/windows/).
++ - Choose the latest Python 3.x version
++
++2. Run installer:
++ - Double-click the downloaded installer.
++3. Installation Options:
++ - Choose "Customize installation" for advanced options or leave the defaults.
++4. Add Python to PATH (Recommended):
++ - Check the box "Add Python X.X to PATH" to make Python accessible from the command prompt.
++5. Install Python:
++ - Click "Install Now" to start the installation.
++6. Verify Installation:
++ - Open the Command Prompt or PowerShell and run python to see Python's version.
++
++### Installing project dependencies.
++1. Move to the cloned repository's directory.
++```
++cd <path-to>/Backend-behave-request
++```
++2. Use `pip` to install dependencies.
++```
++pip install -r requirements.txt
++```
++
++### Sources
++[Python3 Guide](https://python3.guide/).
++
++# Test Execution
++Given all the scenarios are tagged the tests execution is pretty flexible by using the `behave` command.
++
++## Test suites
++
++- `@smoke`: contain the tests that ensures the core functionality of the API is healthy.
++- `@sanity`: an step forward on validating the main features of the API, ensuring that all the functionalities are working as expected.
++- `@regression`: alternative and error validation tests, ansures that the whole API is healthy.
++
++## Execution commands
++
++First of all, execute the steps in the [Setup](#Project Setup) section. Once the setup is completed, execute all or specific test cases as follow. 
++
++### All test cases
++
++``` 
++behave
++```
++
++### Specific suite
++
++``` 
++behave --tags=smoke
++```
++
++### Specific functionality
++
++``` 
++behave --tags=create
++```
++
++
++
++Follow this Behave [documentation](https://behave.readthedocs.io/en/latest/tag_expressions.html) to know more about using tags.
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"fee63d46-cb5e-4240-86a1-efa400d4b8b2\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/environment.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/features/create_post.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/features/create_post.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/features/delete_post.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/features/delete_post.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/features/get_post.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/features/get_post.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/features/update_post.feature\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/features/update_post.feature\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/steps/api_request.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/support/api_request.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/steps/implemenatation.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/steps/implemenatation.py\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2VIHgwKyRXluzD5Sf6vEzaMQBOb\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Agustin Beradi/Desktop/Code/QA/Backend-behave-request&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Agustin Beradi\\Desktop\\Code\\QA\\Backend-behave-request\\support\" />\r\n      <recent name=\"C:\\Users\\Agustin Beradi\\Desktop\\Code\\QA\\Backend-behave-request\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" nameIsGenerated=\"true\">\r\n      <module name=\"Backend-behave-request\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"fee63d46-cb5e-4240-86a1-efa400d4b8b2\" name=\"Changes\" comment=\"\" />\r\n      <created>1694516789068</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1694516789068</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c42328a808e68d41c0f3f02aecaaa18187539baa)
++++ b/.idea/workspace.xml	(date 1697669755667)
+@@ -5,14 +5,12 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="fee63d46-cb5e-4240-86a1-efa400d4b8b2" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/features/create_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/create_post.feature" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/features/delete_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/delete_post.feature" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/features/get_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/get_post.feature" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/features/update_post.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/update_post.feature" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/steps/api_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/api_request.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/steps/implemenatation.py" beforeDir="false" afterPath="$PROJECT_DIR$/steps/implemenatation.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -28,6 +26,9 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectId" id="2VIHgwKyRXluzD5Sf6vEzaMQBOb" />
+   <component name="ProjectViewState">

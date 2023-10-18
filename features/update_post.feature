@@ -1,8 +1,9 @@
+@update
 Feature: Update an existent post
     In order to update a existent post
     As a Jsonplaceholder user
     I want to be able to send a request to the API
-
+    @smoke
     Scenario: Update a existent post
       When a 'PUT' request is sent to the endpoint 'posts/1' with body
     """

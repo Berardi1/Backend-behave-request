@@ -6,8 +6,8 @@
 ## Table of Contents
 
 - [Pre-requisites](#Pre-requisites)
-- [Project Setup](#Project Setup)
-- [Test execution](#testexecution)
+- [Project Setup](#Project-Setup)
+- [Test execution](#tests-execution)
 
 
 ## Pre-requisites
@@ -37,7 +37,7 @@ If you're using Windows and don't have Python installed, follow these steps to g
    
 
 ### Creating a virtual env with using the Python3 baked module `venv`.
-I'd recommend to create a Virual Env to avoid interfering other Python project on your local , although it is optional due to it does not impact the behavior of this implementation. For more information please visit [this documentation](https://docs.python.org/3/library/venv.html).
+I'd recommend to create a Virtual Env to avoid interfering other Python project on your local , although it is optional due to it does not impact the behavior of this implementation. For more information please visit [this documentation](https://docs.python.org/3/library/venv.html).
 
 0. Clone this repository.
 1. Move to the cloned repository's directory.
@@ -71,12 +71,12 @@ Given all the scenarios are tagged the tests execution is pretty flexible by usi
 ## Test suites
 
 - `@smoke`: contain the tests that ensures the core functionality of the API is healthy.
-- `@sanity`: an step forward on validating the main features of the API, ensuring that all the functionalities are working as expected.
+- `@sanity`: a step forward on validating the main features of the API, ensuring that all the functionalities are working as expected.
 - `@regression`: alternative and error validation tests, ensures that the whole API is healthy.
 
 ## Execution commands
 
-First of all, execute the steps in the [Setup](#project-setup) section. Once the setup is completed, execute all or specific test cases as follow. 
+First of all, execute the steps in the [Setup](#project-setup) section. Once the setup is completed, execute all or specific test cases as follows. 
 
 ### All test cases
 

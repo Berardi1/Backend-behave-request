@@ -5,29 +5,32 @@ def setup_request():
     return requests.Session()
 
 
-def send_request(context, base_url, endpoint, body, headers={}, method='GET'):
-    # Set default headers for the request
+def send_request(context, base_url, endpoint, body, headers=None, method='GET'):
+    if headers is None:
+        headers = {}
+
     headers = set_default_headers(headers)
 
-    # Create a session for making the HTTP request
     session = setup_request()
-
-    # Construct the full URL by combining the base URL and endpoint
     full_url = base_url + endpoint
 
-    # Define available HTTP methods and execute the requested method
     methods = {
-        'get': session.get(full_url, headers=headers),
-        'post': session.post(full_url, data=body, headers=headers),
-        'put': session.put(full_url, data=body, headers=headers),
-        'delete': session.delete(full_url, headers=headers),
-        'head': session.head(full_url, headers=headers),
-        'options': session.options(full_url, headers=headers)
+        'get': session.get,
+        'post': session.post,
+        'put': session.put,
+        'delete': session.delete,
+        'head': session.head,
+        'options': session.options
     }
-    response = methods[method.lower()]  # Execute the requested HTTP method
 
-    # Store the response body and status code in the context
-    context.api_response_body = response.json()  # Parse response JSON
+    request_method = methods[method.lower()]
+
+    if method.lower() in ['post', 'put']:
+        response = request_method(full_url, data=body, headers=headers)
+    else:
+        response = request_method(full_url, headers=headers)
+
+    context.api_response_body = response.json()
     context.api_response_status_code = response.status_code
 
 

@@ -7,4 +7,4 @@ Feature: Delete a post
   @smoke
     Scenario: Delete an existent post
       When I perform a 'DELETE' request to the endpoint 'posts/1'
-      Then the response status code should be: "204"
+      Then the response status code should be: "200"

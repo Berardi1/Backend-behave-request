@@ -6,6 +6,6 @@ Feature: Getting a post
     @smoke
      Scenario: Validate that API returns the correct post information
        When I perform a 'GET' request to the endpoint 'posts/1'
-       Then the response should have the 'userId' equals to '1'
-       And the response should have the 'id' equals to '1'
+       Then the response body should have the 'userId' equals to '1'
+       And the response body should have the 'id' equals to '1'
 

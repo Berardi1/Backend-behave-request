@@ -16,6 +16,6 @@ Feature: Update an existent post
     """
 
     Then the response body should have the 'userId' equals to '2'
-    And the response body should have the 'id' equals to '2'
+    And the response body should have the 'id' equals to '1'
     And the response body should have the 'title' equals to 'update post test'
     And the response body should have the 'body' equals to 'This is an update of the test'

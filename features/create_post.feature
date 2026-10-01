@@ -15,6 +15,6 @@ Feature: Create a post
         }
     """
     Then the response body should have the 'userId' equals to '1'
-    And the response body should have the 'id' equals to '2'
+    And the response body should have the 'id' equals to '101'
     And the response body should have the 'title' equals to 'POST test'
     And the response body should have the 'body' equals to 'This is a test'

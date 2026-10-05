@@ -9,7 +9,6 @@ Feature: Create a post
     """
         {
           "userId": 1,
-          "id": 2,
           "title": "POST test",
           "body": "This is a test"
         }

@@ -1,5 +1,6 @@
-import requests
 import json
+
+import requests
 
 
 def setup_request():
@@ -19,15 +20,22 @@ def send_request(context, base_url, endpoint, body, headers=None, method='GET'):
         'get': session.get,
         'post': session.post,
         'put': session.put,
-        'delete': session.delete,
-        'head': session.head,
-        'options': session.options
+        'delete': session.delete
     }
 
-    request_method = methods[method.lower()]
+    method = method.lower()
 
-    if method.lower() in ['post', 'put']:
-        response = request_method(full_url, json=json.loads(body), headers=headers)
+    if method not in methods:
+        raise ValueError(f"Unsupported HTTP method: {method.upper()}")
+
+    request_method = methods[method]
+
+    if method in ['post', 'put']:
+        response = request_method(
+            full_url,
+            json=json.loads(body),
+            headers=headers
+        )
     else:
         response = request_method(full_url, headers=headers)
 
@@ -46,8 +54,8 @@ def get_response_value(response_body, value_path):
 
     search_values = value_path.split('/')
     value_found = response_body
+
     for value in search_values:
-        # Check if found last iterable item in the json path
         try:
             if value in value_found:
                 value_found = value_found[value]
@@ -55,6 +63,7 @@ def get_response_value(response_body, value_path):
             return False
         except TypeError:
             return False
+
     return value_found
 
 
@@ -73,4 +82,5 @@ def set_default_headers(headers=None):
 
     default_headers = {"Content-Type": "application/json"}
     default_headers.update(headers)
+
     return default_headers

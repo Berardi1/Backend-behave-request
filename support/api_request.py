@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def setup_request():
@@ -26,7 +27,7 @@ def send_request(context, base_url, endpoint, body, headers=None, method='GET'):
     request_method = methods[method.lower()]
 
     if method.lower() in ['post', 'put']:
-        response = request_method(full_url, data=body, headers=headers)
+        response = request_method(full_url, json=json.loads(body), headers=headers)
     else:
         response = request_method(full_url, headers=headers)
 

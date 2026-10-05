@@ -57,7 +57,7 @@ def get_response_value(response_body, value_path):
     return value_found
 
 
-def set_default_headers(headers={}):
+def set_default_headers(headers=None):
     """
         Set default HTTP headers with the option to extend or override them.
 
@@ -66,6 +66,9 @@ def set_default_headers(headers={}):
         provided, they will be merged into the default headers dictionary,
         allowing you to extend or override the defaults.
     """
+
+    if headers is None:
+        headers = {}
 
     default_headers = {"Content-Type": "application/json"}
     default_headers.update(headers)
